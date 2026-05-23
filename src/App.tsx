@@ -1,17 +1,25 @@
+import { useState } from 'react';
 import { Hero } from './components/Hero';
 import { Manifesto } from './components/Manifesto';
 import { Clients } from './components/Clients';
 import { Services } from './components/Services';
 import { ContactForm } from './components/ContactForm';
+import { DemandCapture } from './components/DemandCapture';
 
 function App() {
+  const [view, setView] = useState<'landing' | 'demand-capture'>('landing');
+
+  if (view === 'demand-capture') {
+    return <DemandCapture onExit={() => setView('landing')} />;
+  }
+
   return (
     <main className="bg-matte-black selection:bg-surgeon-white selection:text-matte-black scrollbar-hide">
       <Hero />
       <Manifesto />
       <Clients />
       <Services />
-      <ContactForm />
+      <ContactForm onStartCapture={() => setView('demand-capture')} />
       
       {/* Footer */}
       <footer className="py-24 px-6 border-t border-white/5 text-center">

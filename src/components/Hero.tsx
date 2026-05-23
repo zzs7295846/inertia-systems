@@ -41,10 +41,11 @@ export const Hero = () => {
         {/* The Core Message - Revealed with effort */}
         <motion.div 
           style={{ opacity: messageOpacity }}
-          className="max-w-2xl text-center"
+          className="max-w-3xl text-center"
         >
-          <p className="text-xl md:text-3xl leading-relaxed text-balance font-serif italic text-surgeon-white">
-            「感受到阻力了嗎？這就是你的大腦正在重新奪回掌控權的訊號。歡迎來到 Inertia Systems。」
+          <p className="text-xl md:text-2xl leading-relaxed text-balance font-serif italic text-surgeon-white">
+            「我們不做『客戶給需求，就單向盲從執行』的代工，而是由老闆穩握『品味與架構』的最終簽核法槌，確保交付系統不臃腫且強韌。<br/><br/>
+            你可以外包思考，但絕不能外包理解力。」
           </p>
         </motion.div>
 
