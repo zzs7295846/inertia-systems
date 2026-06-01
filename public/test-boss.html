@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>HIS Boss Fight Test</title>
+    <style>
+        body { background: #F5F0E8; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: Arial, sans-serif; }
+        canvas { border: 4px solid #6B4423; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); background: white; }
+        .hint { position: absolute; bottom: 20px; color: #6B4423; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="600" height="400"></canvas>
+    <div class="hint">點擊畫布或按 [空白鍵] 發動 AXL 串流攻擊</div>
+
+    <script src="/games/boss-fight.js"></script>
+    <script>
+        window.onload = () => {
+            const game = new HISBossFight('gameCanvas', {
+                bossName: 'ICD-10 編碼混亂怪',
+                message: '轉型成功！您已實現 3 秒風險辨識的 Trinity 境界。'
+            });
+        };
+    </script>
+</body>
+</html>

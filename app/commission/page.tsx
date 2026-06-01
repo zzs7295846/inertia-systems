@@ -19,18 +19,27 @@ export default function CommissionPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    try {
-      const docRef = await addDoc(collection(db, 'commissions'), {
-        ...formData,
-        createdAt: new Date(),
-      });
-      alert('委託已送出！');
-      router.push(`/game/${docRef.id}`);
-    } catch (error) {
-      console.error('Error adding document: ', error);
-      // For demo purposes, even if Firebase fails, we can simulate a redirect
+    console.log('Form submitting...', formData);
+    
+    // Simulate a slight delay for better UX
+    const timer = setTimeout(() => {
       const mockId = 'mock-' + Math.random().toString(36).substr(2, 9);
       router.push(`/game/${mockId}`);
+    }, 500);
+
+    try {
+      // Attempt Firebase only if config is not placeholders
+      if (!process.env.NEXT_PUBLIC_FIREBASE_API_KEY?.startsWith('YOUR_')) {
+        const docRef = await addDoc(collection(db, 'commissions'), {
+          ...formData,
+          createdAt: new Date(),
+        });
+        clearTimeout(timer);
+        alert('委託已送出！');
+        router.push(`/game/${docRef.id}`);
+      }
+    } catch (error) {
+      console.error('Firebase error, falling back to mock:', error);
     }
   };
 
